@@ -1,0 +1,603 @@
+/* Import original theme CSS assets */
+@import "./assets/css/bootstrap.min.css";
+@import "./assets/css/plugins.css";
+@import "./assets/css/swiper.css";
+@import "./assets/css/style.css";
+@import "./assets/css/coloring.css";
+@import "./assets/css/colors/scheme-01.css";
+
+/* Premium modern UI enhancements and micro-animations */
+:root {
+  --primary-color: #c89c56; /* Elegant golden accent */
+  --dark-color: #1a1a1a;
+  --light-color: #f8f9fa;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--light-color);
+  color: #444444;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .subtitle {
+  font-family: 'Outfit', sans-serif;
+  color: #ffffff;
+}
+
+/* React sticky header style overrides with smooth scroll-down animation */
+@keyframes headerSlideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+header.sticky.solid {
+  background-color: rgba(18, 18, 18, 0.95) !important;
+  backdrop-filter: blur(10px);
+  padding: 12px 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  animation: headerSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Smooth logo scaling transition on scroll */
+.logo-main {
+  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+header.sticky.solid .logo-main {
+  max-height: 42px !important;
+}
+
+header.mobile-show {
+  background: #111111 !important;
+}
+
+/* Custom interactive calendar overrides */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Smooth micro-interactions */
+.hover-scale-1-1 {
+  transition: var(--transition-smooth);
+}
+.hover-scale-1-1:hover {
+  transform: scale(1.05);
+}
+
+.hover-scale-1-2 {
+  transition: var(--transition-smooth);
+}
+.hover-scale-1-2:hover {
+  transform: scale(1.1);
+}
+
+/* Custom CSS animations replacing jQuery WOW */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wow {
+  visibility: visible !important;
+}
+
+.wow.fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Swiper pagination styling overrides */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.4) !important;
+  opacity: 1 !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--primary-color) !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* Interactive elements */
+.accordion-section {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 10px 15px !important;
+  margin-bottom: 5px;
+}
+.accordion-section:hover {
+  background-color: rgba(200, 156, 86, 0.05); /* Soft premium golden cream tint */
+}
+
+.accordion-header {
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition-smooth);
+}
+.accordion-header:hover {
+  color: var(--primary-color);
+}
+
+.accordion-body-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.accordion-body-collapse.open {
+  max-height: 500px;
+}
+
+.accordion-body-collapse p {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.accordion-body-collapse.open p {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+/* Gallery filtering grid transitions */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.gallery-item {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: itemFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes itemFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile responsive navigation overrides */
+@media (max-width: 991px) {
+  .navigation-col {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #111111;
+    z-index: 999;
+    padding: 80px 30px 40px;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  }
+
+  .navigation-col.mobile-show {
+    right: 0;
+  }
+
+  #mainmenu {
+    flex-direction: column;
+    width: 100%;
+    float: none !important;
+    margin: 0 !important;
+  }
+
+  #mainmenu li {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  #mainmenu li span.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  #mainmenu li span.menu-item::after {
+    content: "\f107";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  #mainmenu li.expanded span.menu-item::after {
+    content: "\f106";
+  }
+
+  #mainmenu ul {
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    background: #181818 !important;
+    box-shadow: none !important;
+    padding: 10px 15px !important;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+
+  #mainmenu .mega .sb-menu {
+    padding: 0 !important;
+  }
+  
+  #mainmenu .mega .sb-menu h6 {
+    color: #ffffff !important;
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+/* Custom Floating Subheader card styling overrides */
+#subheader {
+  margin: 80px 10px 30px 10px !important;
+  padding: 110px 0 110px 0 !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+@media (max-width: 991px) {
+  #subheader {
+    margin: 50px 10px 20px 10px !important;
+    padding: 90px 0 90px 0 !important;
+    border-radius: 16px !important;
+  }
+  #subheader h1 {
+    font-size: 42px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #subheader {
+    margin: 50px 10px 12px 10px !important;
+    padding: 75px 0 75px 0 !important;
+    border-radius: 12px !important;
+  }
+  #subheader h1 {
+    font-size: 32px !important;
+  }
+}
+
+/* Anchor the header perfectly at the top of the page */
+header {
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* Option Item Hover Transition */
+.option-item {
+  transition: background-color 0.2s ease;
+}
+.option-item:hover {
+  background-color: #f8f9fa !important;
+}
+
+/* Symmetrical responsive spacing for the footer card matching mockup exactly */
+.custom-footer {
+  margin: 40px 10px 10px 10px !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background-color: #423732 !important;
+  padding: 48px 90px 48px 90px !important; /* 90px padding + 10px margin = 100px from screen edge */
+}
+
+@media (max-width: 991px) {
+  .custom-footer {
+    margin: 30px 10px 10px 10px !important;
+    padding: 40px 30px 40px 30px !important; /* Elegant padding for tablet viewports */
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-footer {
+    margin: 20px 10px 10px 10px !important;
+    padding: 30px 15px 30px 15px !important; /* Snug padding for mobile viewports */
+  }
+}
+
+/* Initial state class for GSAP stable hero CTA to prevent React re-renders from clobbering visibility */
+.hero-cta-init {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Fix button hover slide animation to be perfectly centered and stable across all devices and padding configurations */
+.btn-main.fx-slide {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.btn-main.fx-slide span {
+  display: block !important;
+  position: relative !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.btn-main.fx-slide:hover span {
+  transform: translateY(40px) !important;
+  opacity: 0 !important;
+}
+
+.btn-main.fx-slide:before {
+  content: attr(data-hover) !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  transform: translateY(-100%) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.btn-main.fx-slide:hover:before {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Container for aligning hero content overlay elements at the bottom with responsive padding */
+.hero-overlay-container {
+  display: flex !important;
+  align-items: flex-end !important;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .hero-overlay-container {
+    padding-bottom: 40px;
+  }
+}
+
+/* Fluid, responsive vertical spacing container for hero slider text to align the CTA button tightly and consistently */
+.hero-text-container {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+/* Headline Styling sampled exactly from reference mockup specifications */
+.hero-headline {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 72px !important;
+  font-weight: 700 !important;
+  line-height: 84px !important;
+  letter-spacing: -1.5px !important;
+  color: #ffffff !important;
+  margin-bottom: 20px !important; /* Creates clean spacing before the paragraph */
+}
+
+/* Paragraph Body Styling sampled exactly from reference mockup specifications */
+.hero-body-text {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 22px !important;
+  color: rgba(255, 255, 255, 0.9) !important; /* Smooth, slightly muted white */
+  margin-bottom: 0 !important;
+}
+
+/* Responsive typography adjustments for tablet viewports */
+@media (max-width: 991px) {
+  .hero-headline {
+    font-size: 48px !important;
+    line-height: 54px !important;
+    letter-spacing: -1.0px !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-body-text {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+}
+
+/* Responsive typography adjustments for mobile viewports */
+@media (max-width: 576px) {
+  .hero-headline {
+    font-size: 36px !important;
+    line-height: 42px !important;
+    letter-spacing: -0.5px !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+/* Lenis smooth scroll boilerplate */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Responsive typography for new PHP template index layout */
+.hero-headline-large {
+  font-family: 'Jost', sans-serif !important;
+  font-size: 96px !important;
+  font-weight: 700 !important;
+  line-height: 1.02em !important;
+  letter-spacing: -2.5px !important;
+  color: #ffffff !important;
+  margin-bottom: 20px !important;
+}
+
+@media (max-width: 991px) {
+  .hero-headline-large {
+    font-size: 64px !important;
+    line-height: 1.05em !important;
+    letter-spacing: -1.5px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-headline-large {
+    font-size: 10vw !important; /* responsive font size matching template behavior */
+    line-height: 1.05em !important;
+    letter-spacing: -0.5px !important;
+  }
+}
+
+/* lds-roller spinner styles (from designesia template) */
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-roller div {
+  animation: lds-roller-anim 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-color, #c89c56);
+  margin: -2px 0 0 -2px;
+}
+
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+
+@keyframes lds-roller-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   Modern Navbar Animations & Enhancements (Desktop)
+   ========================================== */
+@media (min-width: 992px) {
+  /* Dropdown Submenu fade & slide-down animation */
+  #mainmenu li ul {
+    visibility: hidden !important;
+    opacity: 0 !important;
+    margin-top: -10px !important;
+    display: block !important;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  #mainmenu li:hover > ul {
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-top: 0px !important;
+  }
+
+  #mainmenu > li > a {
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+}
