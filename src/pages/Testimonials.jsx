@@ -9,12 +9,18 @@ import Subheader from '../components/Subheader';
  */
 export default function Testimonials() {
   const reviews = [
-    { text: 'A truly outstanding stay — warm service, beautiful rooms, and an atmosphere that feels unforgettable.', author: 'Anna L., Paris', rating: 5, date: 'May 12, 2026' },
-    { text: 'Everything exceeded expectations — from the amenities to the staff, truly a memorable hotel experience.', author: 'Michael H., Toronto', rating: 5, date: 'April 28, 2026' },
-    { text: 'Impeccable attention to detail. Every moment felt personal and thoughtfully crafted during our stay.', author: 'Nadia R., Dubai', rating: 5, date: 'April 15, 2026' },
-    { text: 'From check-in to check-out, the experience was effortless and luxurious. Highly recommended.', author: 'Tom S., Los Angeles', rating: 5, date: 'March 30, 2026' },
-    { text: 'Beautiful interiors, friendly staff, and great location. We loved every moment of our vacation.', author: 'Elise K., Amsterdam', rating: 5, date: 'March 18, 2026' },
-    { text: 'Exceptional hospitality and comfort. The perfect choice for a relaxing and refreshing getaway.', author: 'David M., Singapore', rating: 5, date: 'Feb 24, 2026' }
+    { name: 'Emily Johnson', text: 'Beautiful room, spotless bathroom, and incredibly comfortable bed. The romantic setup made our anniversary truly special.', date: '12 March 2025', rating: 5, avatar: '/images/testimonial/1.webp' },
+    { name: 'Michael Brown', text: 'Exceptional service from check-in to check-out. Staff were warm, attentive, and always ready to help.', date: '28 February 2025', rating: 5, avatar: '/images/testimonial/2.webp' },
+    { name: 'Sophia Lee', text: 'The breakfast was outstanding with plenty of options. Dining with a view made mornings unforgettable.', date: '18 February 2025', rating: 5, avatar: '/images/testimonial/3.webp' },
+    { name: 'Daniel Martinez', text: 'Perfect location—quiet yet close to everything. Ideal for both relaxing and exploring the city.', date: '02 February 2025', rating: 5, avatar: '/images/testimonial/4.webp' },
+    { name: 'Olivia Wilson', text: 'Spa facilities were top-notch. Exactly what we needed after a long day of travel.', date: '25 January 2025', rating: 5, avatar: '/images/testimonial/5.webp' },
+    { name: 'James Anderson', text: 'Elegant interior, calming atmosphere, and excellent soundproofing. Slept incredibly well.', date: '10 January 2025', rating: 5, avatar: '/images/testimonial/6.webp' },
+    { name: 'Laura Bennett', text: 'From the moment we arrived, everything felt thoughtfully curated. The room was beautifully designed, exceptionally clean, and incredibly comfortable. The romantic touches made our stay feel truly special and memorable.', date: '22 December 2024', rating: 5, avatar: '/images/testimonial/7.webp' },
+    { name: 'Thomas Müller', text: 'The hotel strikes a perfect balance between luxury and warmth. Staff were professional yet genuinely friendly, and every request was handled quickly. The overall experience exceeded our expectations.', date: '18 December 2024', rating: 5, avatar: '/images/testimonial/8.webp' },
+    { name: 'Isabella Rossi', text: 'Every detail felt intentional, from the soft lighting to the premium bedding. Breakfast was excellent with a wide selection, and the dining area created a relaxed, elegant atmosphere.', date: '10 December 2024', rating: 5, avatar: '/images/testimonial/9.webp' },
+    { name: 'Daniel Wong', text: 'The location was ideal—peaceful and quiet, yet close enough to major attractions. The room was spacious, well-maintained, and perfect for relaxing after a long day.', date: '05 December 2024', rating: 5, avatar: '/images/testimonial/10.webp' },
+    { name: 'Sophie Laurent', text: 'We stayed for a weekend and wished we could extend our stay. The ambiance, service quality, and attention to comfort made this one of our best hotel experiences.', date: '30 November 2024', rating: 5, avatar: '/images/testimonial/11.webp' },
+    { name: 'Alexander Novak', text: 'This hotel delivers a refined, comfortable experience without feeling overly formal. Everything—from the room to the service—felt polished and thoughtfully executed.', date: '22 November 2024', rating: 5, avatar: '/images/testimonial/12.webp' }
   ];
 
   return (
@@ -25,41 +31,47 @@ export default function Testimonials() {
       {/* Subheader banner */}
       <Subheader title="Testimonials" tagline="Guest Reviews" backgroundImage="/images/background/1.webp" />
 
-      <main className="bg-dark text-light py-5">
-        <section className="py-4">
+      <main className="bg-white text-dark py-5">
+        <section aria-label="section" className="py-4 bg-light">
           <div className="container">
-            
-            <div className="row g-4 justify-content-center mb-5 text-center">
-              <div className="col-lg-6">
-                <div className="subtitle text-primary text-uppercase" style={{ color: '#c89c56' }}>Reviews</div>
-                <h2 className="text-white fs-40">What Our Guests Say</h2>
-                <p className="text-muted">
-                  We are extremely proud to share the verified reviews and feedback provided by our beloved guests.
-                </p>
-              </div>
-            </div>
 
             <div className="row g-4">
               {reviews.map((rev, idx) => (
-                <div className="col-md-6 col-lg-4" key={idx}>
-                  <div className="p-4 p-md-5 bg-dark-2 rounded-1 border border-secondary border-opacity-10 h-100 d-flex flex-column justify-content-between transition-all duration-300 hover-scale-1-1">
+                <div className="col-lg-4 col-md-6 text-start" key={idx}>
+                  <div className="bg-white rounded-1 p-30 border h-100 d-flex flex-column justify-content-between transition-all duration-300 hover-scale-1-1">
                     
-                    {/* Stars & Text */}
                     <div>
-                      <div className="d-stars text-primary mb-3" style={{ color: '#c89c56' }}>
-                        {[...Array(rev.rating)].map((_, i) => (
-                          <i key={i} className="fa-solid fa-star fs-16 me-1"></i>
-                        ))}
+                      {/* Reviewer Header info */}
+                      <div className="d-flex justify-content-between mb-3 align-items-center">
+                        <div className="d-flex align-items-center">
+                          <img 
+                            className="w-40px circle me-3" 
+                            alt={rev.name} 
+                            src={rev.avatar} 
+                            style={{ borderRadius: '50%', width: '40px', height: '40px', objectFit: 'cover' }} 
+                          />
+                          <div className="mt-2">
+                            <div className="text-dark fw-bold lh-1">{rev.name}</div>
+                            <small className="text-muted">{rev.date}</small>
+                          </div>
+                        </div>
+                        <img src="/images/misc/google-icon.svg" className="w-30px" alt="Google review" style={{ width: '30px', height: '30px' }} />
                       </div>
-                      <p className="text-muted leading-relaxed mb-4 italic" style={{ fontSize: '15px' }}>
+
+                      {/* Ext Rating stars */}
+                      <div className="de-rating-ext mb-2">
+                        <span className="d-stars text-primary" style={{ color: '#c89c56' }}>
+                          {[...Array(rev.rating)].map((_, i) => (
+                            <i key={i} className="fa fa-star me-1"></i>
+                          ))}
+                        </span>
+                        <span className="ms-2 text-muted fw-bold">5.0</span>
+                      </div>
+
+                      {/* Review Text content */}
+                      <p className="text-muted leading-relaxed mb-0">
                         "{rev.text}"
                       </p>
-                    </div>
-
-                    {/* Author Metadata */}
-                    <div className="border-top border-secondary border-opacity-25 pt-3 d-flex justify-content-between align-items-center">
-                      <span className="fw-bold text-white" style={{ fontSize: '15px' }}>{rev.author}</span>
-                      <span className="text-muted small">{rev.date}</span>
                     </div>
 
                   </div>

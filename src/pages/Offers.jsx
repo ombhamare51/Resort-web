@@ -26,23 +26,23 @@ export default function Offers() {
       {/* Subheader */}
       <Subheader title="Special Offers" tagline="Enjoy Your Stay" backgroundImage="/images/background/1.webp" />
 
-      <main className="bg-dark py-5 text-light">
-        <section className="py-4">
+      <main className="bg-white py-5 text-dark">
+        <section className="py-4 bg-light">
           <div className="container">
             <div className="row g-4">
               
               {deals.map((deal) => (
                 <div className="col-lg-4 col-md-6" key={deal.id}>
-                  <div className="overflow-hidden rounded-1 h-100 bg-dark-2 d-flex flex-column justify-content-between border border-secondary border-opacity-10 transition-all duration-300 hover-scale-1-1">
+                  <div className="overflow-hidden rounded-1 h-100 bg-white d-flex flex-column justify-content-between border border-secondary border-opacity-10 transition-all duration-300 hover-scale-1-1">
                     
                     {/* Hover Card Cover */}
                     <div className="hover relative position-relative overflow-hidden" style={{ width: '100%', aspectRatio: '795.2 / 1189.81' }}>
-                      <h3 
+                      <span 
                         className="abs rounded-3 text-white fs-14 lh-1 p-2 px-3 m-4 top-0 start-0 z-3" 
-                        style={{ backgroundColor: '#c89c56', position: 'absolute' }}
+                        style={{ backgroundColor: '#c89c56', position: 'absolute', fontWeight: 600 }}
                       >
                         {deal.tag}
-                      </h3>
+                      </span>
                       <img 
                         src={deal.img} 
                         className="w-100 h-100 object-fit-cover hover-scale-1-2" 
@@ -53,9 +53,9 @@ export default function Offers() {
                     </div>
 
                     {/* Card Content Section */}
-                    <div className="p-4 p-md-5 text-white bg-dark-2">
-                      <Link className="text-white text-decoration-none" to="/offer-single">
-                        <h3 className="fs-22 mb-2 hover-text-primary" style={{ transition: 'color 0.2s', fontWeight: 600 }}>{deal.title}</h3>
+                    <div className="p-4 p-md-5 bg-white text-dark text-start">
+                      <Link className="text-dark text-decoration-none" to="/offer-single">
+                        <h3 className="fs-22 mb-2 text-dark hover-text-primary" style={{ transition: 'color 0.2s', fontWeight: 600 }}>{deal.title}</h3>
                         <p className="text-muted mb-0 small">{deal.desc}</p>
                       </Link>
                     </div>

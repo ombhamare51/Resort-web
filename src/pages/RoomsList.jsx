@@ -68,7 +68,7 @@ export default function RoomsList() {
   ];
 
   return (
-    <div className="rooms-list-layout bg-white">
+    <div className="rooms-list-layout bg-transparent">
       {/* Navigation Header */}
       <Header headerClass="transparent header-light" />
 

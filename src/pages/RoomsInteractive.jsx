@@ -66,7 +66,7 @@ export default function RoomsInteractive() {
   ];
 
   return (
-    <div className="rooms-interactive-layout bg-white">
+    <div className="rooms-interactive-layout bg-transparent">
       {/* Header */}
       <Header headerClass="transparent header-light" />
 

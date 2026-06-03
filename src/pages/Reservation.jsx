@@ -123,7 +123,7 @@ export default function Reservation() {
   const activeRoom = ROOM_OPTIONS.find(o => o.value === roomType) || ROOM_OPTIONS[0];
 
   return (
-    <div className="reservation-layout bg-white">
+    <div className="reservation-layout bg-transparent">
       {/* Navbar - Keep Saptagiri name untouched inside Header */}
       <Header headerClass="transparent header-light" />
 

@@ -38,60 +38,44 @@ export default function Gallery() {
       {/* Subheader */}
       <Subheader title="Gallery" tagline="Enjoy Your Stay" backgroundImage="/images/background/1.webp" />
 
-      <main className="bg-dark text-light py-5">
-        <section className="py-4">
+      <main className="bg-white text-dark py-5">
+        <section id="section-gallery" className="py-4 bg-light" aria-label="section">
           <div className="container">
             
-            {/* Filter Buttons */}
+            {/* Filter Buttons using template #filters */}
             <div className="row mb-5">
               <div className="col-md-12 text-center">
-                <ul className="d-flex justify-content-center gap-3 list-unstyled flex-wrap">
-                  {['all', 'rooms', 'dining', 'facilities'].map((cat) => (
-                    <li key={cat}>
-                      <button 
-                        onClick={() => setFilter(cat)}
-                        className={`btn px-4 py-2 border-0 rounded-pill text-capitalize`}
-                        style={{
-                          backgroundColor: filter === cat ? '#c89c56' : 'transparent',
-                          color: filter === cat ? '#fff' : '#a0a0a0',
-                          border: '1px solid rgba(255,255,255,0.1)',
-                          transition: 'all 0.3s'
-                        }}
-                      >
-                        {cat === 'all' ? 'View All' : cat}
-                      </button>
-                    </li>
-                  ))}
+                <ul id="filters">
+                  <li><span className={filter === 'all' ? 'selected' : ''} onClick={() => setFilter('all')} style={{ cursor: 'pointer' }}>View All</span></li>
+                  <li><span className={filter === 'rooms' ? 'selected' : ''} onClick={() => setFilter('rooms')} style={{ cursor: 'pointer' }}>Rooms</span></li>
+                  <li><span className={filter === 'dining' ? 'selected' : ''} onClick={() => setFilter('dining')} style={{ cursor: 'pointer' }}>Dining</span></li>
+                  <li><span className={filter === 'facilities' ? 'selected' : ''} onClick={() => setFilter('facilities')} style={{ cursor: 'pointer' }}>Facilities</span></li>
                 </ul>
               </div>
             </div>
 
             {/* Gallery Grid */}
-            <div className="gallery-grid">
+            <div className="row g-4" id="gallery">
               {filteredImages.map((item) => (
                 <div 
-                  className="gallery-item" 
+                  className="col-lg-4 col-md-6" 
                   key={item.id}
-                  onClick={() => setLightboxImage(item.src)}
-                  style={{ cursor: 'zoom-in' }}
                 >
-                  <div className="relative overflow-hidden rounded-1 position-relative group hover">
-                    <div 
-                      className="absolute start-0 top-0 w-100 h-100 overlay-black-5 d-flex align-items-center justify-content-center opacity-0 hover-opacity-100 transition-all duration-300"
-                      style={{
-                        position: 'absolute',
-                        backgroundColor: 'rgba(0,0,0,0.5)',
-                        transition: 'opacity 0.3s ease'
-                      }}
-                    >
-                      <i className="fa-solid fa-magnifying-glass-plus text-white fs-30"></i>
+                  <div 
+                    className="d-block hover"
+                    onClick={() => setLightboxImage(item.src)}
+                    style={{ cursor: 'zoom-in' }}
+                  >
+                    <div className="relative overflow-hidden rounded-1">
+                      <div className="absolute start-0 w-100 hover-op-1 p-5 abs-middle z-3 text-center text-white fw-bold">View</div>
+                      <div className="absolute start-0 w-100 h-100 overlay-black-5 hover-op-1 z-2"></div>
+                      <img 
+                        src={item.src} 
+                        className="w-100 hover-scale-1-2" 
+                        alt={`Gallery view of ${item.category}`} 
+                        style={{ height: '280px', objectFit: 'cover' }} 
+                      />
                     </div>
-                    <img 
-                      src={item.src} 
-                      className="w-100 hover-scale-1-2" 
-                      alt={`Gallery view of ${item.category}`} 
-                      style={{ height: '260px', objectFit: 'cover' }} 
-                    />
                   </div>
                 </div>
               ))}

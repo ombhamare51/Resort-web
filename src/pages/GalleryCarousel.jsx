@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Subheader from '../components/Subheader';
@@ -8,25 +10,22 @@ import Subheader from '../components/Subheader';
  * Includes slide buttons and lightbox capabilities.
  */
 export default function GalleryCarousel() {
-  const [activeSlide, setActiveSlide] = useState(0);
   const [lightboxImage, setLightboxImage] = useState(null);
 
   const images = [
     '/images/gallery/1.webp',
-    '/images/gallery/2.webp',
+    '/images/gallery/6.webp',
+    '/images/gallery/9.webp',
     '/images/gallery/3.webp',
-    '/images/gallery/4.webp',
+    '/images/gallery/8.webp',
     '/images/gallery/5.webp',
-    '/images/gallery/6.webp'
+    '/images/gallery/11.webp',
+    '/images/gallery/2.webp',
+    '/images/gallery/10.webp',
+    '/images/gallery/4.webp',
+    '/images/gallery/7.webp',
+    '/images/gallery/12.webp'
   ];
-
-  const handleNext = () => {
-    setActiveSlide((prev) => (prev + 1) % images.length);
-  };
-
-  const handlePrev = () => {
-    setActiveSlide((prev) => (prev - 1 + images.length) % images.length);
-  };
 
   return (
     <div className="gallery-carousel-layout">
@@ -36,79 +35,49 @@ export default function GalleryCarousel() {
       {/* Subheader banner */}
       <Subheader title="Gallery Carousel" tagline="Enjoy Your Stay" backgroundImage="/images/background/1.webp" />
 
-      <main className="bg-dark text-light py-5">
-        <section className="py-4">
-          <div className="container">
-            <div className="row justify-content-center">
+      <main className="bg-white text-dark py-5">
+        <section id="section-gallery" className="py-4 bg-light" aria-label="section">
+          <div className="container-fluid">
+            <div className="row">
               
-              <div className="col-lg-10">
-                {/* Slideshow Wrap */}
-                <div className="position-relative rounded-1 overflow-hidden" style={{ height: '500px' }}>
-                  
-                  {images.map((src, idx) => (
-                    <div 
-                      key={idx}
-                      className={`absolute top-0 start-0 w-100 h-100 transition-opacity duration-700 d-flex align-items-center justify-content-center ${idx === activeSlide ? 'opacity-100 z-2' : 'opacity-0 z-1'}`}
-                      style={{
-                        backgroundImage: `url(${src})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        transition: 'opacity 0.8s ease'
-                      }}
-                      onClick={() => setLightboxImage(src)}
-                    >
-                      {/* Dark shade */}
-                      <div className="sw-overlay op-3 absolute w-100 h-100 top-0 start-0" style={{ backgroundColor: 'rgba(0,0,0,0.25)', cursor: 'zoom-in' }}></div>
-                      
-                      <div className="position-absolute bottom-0 start-0 p-4 z-3 text-white bg-dark bg-opacity-50 m-4 rounded">
-                        <span className="fs-18">Photo {idx + 1} of {images.length}</span>
-                      </div>
-                    </div>
-                  ))}
+              <div className="col-lg-12">
+                <div className="owl-custom-nav menu-float" data-target="#carousel-1">
+                  <a className="btn-next" style={{ cursor: 'pointer' }}></a>
+                  <a className="btn-prev" style={{ cursor: 'pointer' }}></a>                                
 
-                  {/* Navigation Buttons */}
-                  <button 
-                    onClick={handlePrev}
-                    className="position-absolute top-50 start-0 translate-middle-y ms-4 btn rounded-circle d-flex align-items-center justify-content-center border-0 text-white z-3"
-                    style={{ width: '50px', height: '50px', backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 10 }}
-                    aria-label="Previous Slide"
+                  <Swiper
+                    modules={[Navigation]}
+                    navigation={{
+                      nextEl: '.btn-next',
+                      prevEl: '.btn-prev',
+                    }}
+                    slidesPerView={1}
+                    breakpoints={{
+                      768: { slidesPerView: 2 },
+                      1024: { slidesPerView: 3 }
+                    }}
+                    spaceBetween={20}
+                    centeredSlides={true}
+                    loop={true}
+                    className="swiper-container"
                   >
-                    <i className="fa-solid fa-angle-left fs-20"></i>
-                  </button>
-
-                  <button 
-                    onClick={handleNext}
-                    className="position-absolute top-50 end-0 translate-middle-y me-4 btn rounded-circle d-flex align-items-center justify-content-center border-0 text-white z-3"
-                    style={{ width: '50px', height: '50px', backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 10 }}
-                    aria-label="Next Slide"
-                  >
-                    <i className="fa-solid fa-angle-right fs-20"></i>
-                  </button>
-
+                    {images.map((src, idx) => (
+                      <SwiperSlide key={idx} className="item">
+                        <div 
+                          className="d-block hover" 
+                          onClick={() => setLightboxImage(src)}
+                          style={{ cursor: 'zoom-in' }}
+                        >
+                          <div className="relative overflow-hidden rounded-1">
+                            <div className="absolute start-0 w-100 hover-op-1 p-5 abs-middle z-3 text-center text-white fw-bold">View</div>
+                            <div className="absolute start-0 w-100 h-100 overlay-black-5 hover-op-1 z-2"></div>
+                            <img src={src} className="w-100 hover-scale-1-2" alt="" style={{ height: '320px', objectFit: 'cover' }} />
+                          </div>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
                 </div>
-
-                {/* Thumbnail dots list */}
-                <div className="d-flex justify-content-center gap-2 mt-4">
-                  {images.map((src, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveSlide(idx)}
-                      className="p-0 border-0 rounded"
-                      style={{
-                        width: '80px',
-                        height: '50px',
-                        backgroundImage: `url(${src})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        opacity: idx === activeSlide ? 1 : 0.4,
-                        border: idx === activeSlide ? '2px solid #c89c56' : 'none',
-                        transition: 'opacity 0.3s'
-                      }}
-                      aria-label={`Go to slide ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-
               </div>
 
             </div>
@@ -121,12 +90,20 @@ export default function GalleryCarousel() {
         <div 
           className="position-fixed top-0 start-0 w-100 h-100 z-max d-flex align-items-center justify-content-center"
           style={{
-            backgroundColor: 'rgba(0,0, 0, 0.9)',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
             zIndex: 99999,
             cursor: 'zoom-out'
           }}
           onClick={() => setLightboxImage(null)}
         >
+          <button 
+            className="position-absolute top-0 end-0 m-4 btn text-white border-0 bg-transparent"
+            style={{ fontSize: '32px' }}
+            onClick={() => setLightboxImage(null)}
+          >
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+          
           <div className="p-3" style={{ maxWidth: '90%', maxHeight: '90%' }}>
             <img 
               src={lightboxImage} 

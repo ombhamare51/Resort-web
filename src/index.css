@@ -16,11 +16,12 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #ffffff !important;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--light-color);
+  background-color: #ffffff !important;
   color: #444444;
   overflow-x: hidden;
 }
@@ -601,3 +602,171 @@ html.lenis body {
     transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 }
+
+/* Light theme overrides for RoomsSlider page */
+.rooms-slider-layout.slider-light-theme {
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+.rooms-slider-layout.slider-light-theme .sw-overlay {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0.2) 100%) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.rooms-slider-layout.slider-light-theme h1.slider-title {
+  color: #1a1a1a !important;
+}
+
+.rooms-slider-layout.slider-light-theme p.slider-teaser {
+  color: #444444 !important;
+}
+
+.rooms-slider-layout.slider-light-theme .sw-price .d-starting {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.rooms-slider-layout.slider-light-theme .sw-price .d-val {
+  background: linear-gradient(0deg, #666666 0%, #111111 75%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.rooms-slider-layout.slider-light-theme .swiper-pagination {
+  color: #1a1a1a !important;
+}
+
+.rooms-slider-layout.slider-light-theme .swiper-pagination-current {
+  color: #1a1a1a !important;
+}
+
+.rooms-slider-layout.slider-light-theme .swiper-pagination-total {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.rooms-slider-layout.slider-light-theme .swiper-button-next,
+.rooms-slider-layout.slider-light-theme .swiper-button-prev {
+  color: #1a1a1a !important;
+}
+
+.rooms-slider-layout.slider-light-theme .swiper-button-next:after,
+.rooms-slider-layout.slider-light-theme .swiper-button-prev:after {
+  color: #1a1a1a !important;
+}
+
+.rooms-slider-layout.slider-light-theme .btn-main {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+.rooms-slider-layout.slider-light-theme .btn-main:hover {
+  background: #111111 !important;
+  color: #ffffff !important;
+}
+
+/* Cream Navbar Overrides */
+header,
+header.header-light,
+header.transparent,
+body:not(.side-layout) header:not(.smaller):not(.header-mobile).header-light.transparent {
+  background-color: #FAF5EA !important; /* Premium elegant cream background */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+header.sticky.solid {
+  background-color: rgba(250, 245, 234, 0.95) !important; /* Semi-transparent cream for sticky state */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Ensure submenu dropdowns match the cream theme */
+#mainmenu ul {
+  background-color: #FAF5EA !important;
+  border: solid 1px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Submenu dropdown item hover */
+#mainmenu li li a:hover {
+  background-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+/* Ensure menu links and hamburger button are always readable on cream background */
+#mainmenu > li > a {
+  color: var(--heading-font-color) !important;
+}
+
+#mainmenu > li > a:hover,
+#mainmenu > li > a.active {
+  color: var(--primary-color) !important;
+}
+
+header #menu-btn {
+  color: var(--heading-font-color) !important;
+}
+
+/* Rooms Slider Card Custom Styling */
+.rooms-slider-card {
+  height: 600px;
+}
+
+@media (max-width: 991px) {
+  .rooms-slider-card {
+    height: 520px;
+  }
+}
+
+@media (max-width: 576px) {
+  .rooms-slider-card {
+    height: 480px;
+  }
+}
+
+/* Custom Gallery Filter Option Buttons */
+#filters {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 15px !important;
+  flex-wrap: wrap !important;
+  border: none !important;
+}
+
+#filters li {
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#filters li span {
+  display: inline-block !important;
+  padding: 10px 24px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  font-family: 'Outfit', sans-serif !important;
+  color: #555555 !important; /* Charcoal/grey text */
+  background-color: transparent !important;
+  border-radius: 8px !important; /* Elegant rounded corner pill */
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  border: none !important;
+  box-shadow: none !important;
+  letter-spacing: 0.3px !important;
+  text-decoration: none !important;
+}
+
+#filters li span:hover {
+  color: #c89c56 !important;
+}
+
+#filters li span.selected {
+  color: #ffffff !important;
+  background-color: #c89c56 !important; /* Solid gold active background */
+  box-shadow: 0 4px 12px rgba(200, 156, 86, 0.2) !important;
+}
+
+
+

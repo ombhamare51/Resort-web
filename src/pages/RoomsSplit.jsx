@@ -67,7 +67,7 @@ export default function RoomsSplit() {
   ];
 
   return (
-    <div className="rooms-split-layout bg-white">
+    <div className="rooms-split-layout bg-transparent">
       {/* Navigation Header */}
       <Header headerClass="transparent header-light" />
 
